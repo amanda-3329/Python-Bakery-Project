@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Shop Page</h1>
+
+
+ <div class="row">
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1550593802-84ee705f382c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
+          <span class="card-title">Blueberry Muffin</span>
+          <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow" href="{% url 'home' %}><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+    {% comment %} Card 2 {% endcomment %}
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1533049883418-f0e0a8a39576?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
+          <span class="card-title">Cranberry Orange Muffin</span>
+          <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow" href="{% url 'home' %}" ><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+    {% comment %} next card below here {% endcomment %}
+    <div class="col s12 m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://images.unsplash.com/photo-1505253556788-d1b08ba92767?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80">
+          <span class="card-title">Banana Nut Muffin</span>
+          <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow" href="{% url 'home' %}" ><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+            
+
+ 
+    
+  
+{% endblock %}

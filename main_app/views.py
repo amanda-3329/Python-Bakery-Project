@@ -38,7 +38,24 @@ def create_order(request):
         else:
             return render(request, 'order/create_order.html', context)
 
+# Delete Order-------------
 def delete_order(request, order_id):
     order =Order.objects.get(id=order_id)
     order.delete()
     return redirect('order')
+
+# Update Order-------
+def update_order(request, order_id):
+    order = Order.objects.get(id=order_id)
+
+    if request.method == 'GET':
+        form = OrderForm(instance=order)
+        context = {
+            'form': form
+        }
+        return render(request, 'order/update_order.html', context)
+    else: 
+        form = OrderForm(request.POST, instance=order)
+        if form.is_valid():
+            order=form.save()
+            return redirect('detail', order.id)

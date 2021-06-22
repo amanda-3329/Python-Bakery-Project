@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Order Details</h1>
+<div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ order.item_ordered }}</span>
+      <p>Customer Name:{{ order.customer_name }}</p>
+      <p>Customer Email Address: {{ order.customer_email }}</p>     
+      <p>Customer Phone Number: {{ order.customer_phone }}</p>  
+    </div>
+  {% comment %} Delete/Update Buttons {% endcomment %}
+      <div class="card-action">
+          <a href="{% url 'delete_order' order.id %}">Delete</a>
+          {% comment %} <a href="{% url 'update_order' order.id %}">Update</a> {% endcomment %}
+        </div>
+
+
+  </div>
+
+{% endblock %}

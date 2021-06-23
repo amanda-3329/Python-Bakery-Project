@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Order
-from .forms import OrderForm
+from .models import Order, Box
+from .forms import OrderForm, BoxForm
 
 def home(request):
     return render(request, 'home.html')
@@ -21,7 +21,15 @@ def order(request):
 def detail(request, order_id):
     found_order = Order.objects.get(id=order_id)
     print(found_order)
-    context = { 'order': found_order }
+
+    box_form = BoxForm()
+    context = { 
+        'order': found_order,
+        'box_form': box_form
+    
+     }
+
+    
 
     return render(request, 'order/order_detail.html', context)
 # CREATE ORDER-----------------------
@@ -59,3 +67,12 @@ def update_order(request, order_id):
         if form.is_valid():
             order=form.save()
             return redirect('detail', order.id)
+# Add Box Size Form:
+
+def box(request, order_id):
+    form = BoxForm(request.POST)
+    if form.is_valid():
+        new_box_size = form.save(commit=False)
+        new_box_size.order_id = order_id
+        new_box_size.save()
+        return redirect('detail', order_id)

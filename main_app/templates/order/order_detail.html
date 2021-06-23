@@ -3,20 +3,66 @@
 {% block content %}
 
 <h1>Order Details</h1>
-<div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ order.item_ordered }}</span>
-      <p>Customer Name:{{ order.customer_name }}</p>
-      <p>Customer Email Address: {{ order.customer_email }}</p>     
-      <p>Customer Phone Number: {{ order.customer_phone }}</p>  
-    </div>
+<div class="row">
+  <div class="col s6">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ order.item_ordered }}</span>
+        <p>Customer Name:{{ order.customer_name }}</p>
+        <p>Customer Email Address: {{ order.customer_email }}</p>     
+        <p>Customer Phone Number: {{ order.customer_phone }}</p>  
+          </div>
   {% comment %} Delete/Update Buttons {% endcomment %}
-      <div class="card-action">
-          <a href="{% url 'delete_order' order.id %}">Delete</a>
-          <a href="{% url 'update_order' order.id %}">Update</a>
-        </div>
+        <div class="card-action">
+            <a href="{% url 'delete_order' order.id %}">Delete</a>
+            <a href="{% url 'update_order' order.id %}">Update</a>
+            </div>
+      </div>
+    </div>
+ 
 
+  {% comment %}Box card:  {% endcomment %}
+  <div class="col s6">  
+  <form action="{% url 'box' order.id %}"method="post">
+        {% csrf_token %}
+        {{ box_form.as_p }}
+        <input type="submit" class="btn" value="submit">
+      </form>
 
+      
+      
+    <table class="striped">
+      <thead>
+        <tr><th>Date</th><th>Box Size</th></tr>
+      </thead>
+      <tbody>
+        {% for box  in order.box_set.all %}
+          <tr>
+            <td>{{box.date}}</td>
+            <td>{{box.get_box_display}}</td>
+            {% comment %} DELETE TASTING {% endcomment %}
+            <td><a class="btn" href="{% comment %}{% url 'delete_box' order.id box.id %}{% endcomment %}">DELETE BOX</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
+</div>
+
+<script>
+  const dateEl = document.getElementById('id_date');
+  M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+
+ const selectEl = document.getElementById('id_box');
+  M.FormSelect.init(selectEl);
+</script>
+
+
+
 
 {% endblock %}

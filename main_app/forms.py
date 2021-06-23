@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models.fields import DateField
-from .models import Order
+from .models import Order, Box
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -13,3 +13,8 @@ class OrderForm (forms.ModelForm):
         widgets = {
             'order_date': DateInput()
         }
+
+class BoxForm(forms.ModelForm):
+    class Meta:
+        model = Box
+        fields = ('date', 'box')

@@ -8,12 +8,13 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">{{ order.item_ordered }}</span>
-        <p>Customer Name:{{ order.customer_name }}</p>
+         <p>Customer Name:{{ order.customer_name }}</p>
         <p>Customer Email Address: {{ order.customer_email }}</p>     
         <p>Customer Phone Number: {{ order.customer_phone }}</p>  
           </div>
   {% comment %} Delete/Update Buttons {% endcomment %}
         <div class="card-action">
+          <a href="{% url 'create_order' %}">Create Order</a>
             <a href="{% url 'delete_order' order.id %}">Delete</a>
             <a href="{% url 'update_order' order.id %}">Update</a>
             </div>
@@ -26,22 +27,26 @@
   <form action="{% url 'box' order.id %}"method="post">
         {% csrf_token %}
         {{ box_form.as_p }}
-        <input type="submit" class="btn" value="submit">
+        <input type="submit" class="btn grey" value="submit">
       </form>
 
       
       
     <table class="striped">
       <thead>
-        <tr><th>Date</th><th>Box Size</th></tr>
+        <tr><th>Date</th>
+        <th>Box Size</th>
+        <th>Type of Muffin</th>
+        </tr>
       </thead>
       <tbody>
         {% for box  in order.box_set.all %}
           <tr>
-            <td>{{box.date}}</td>
+            <td>{{box.date}}</td>            
             <td>{{box.get_box_display}}</td>
+            <td>{{box.get_item_ordered_display}}</td>
             {% comment %} DELETE TASTING {% endcomment %}
-            <td><a class="btn" href="{% comment %}{% url 'delete_box' order.id box.id %}{% endcomment %}">DELETE BOX</a></td>
+            <td><a class="btn purple" href="{% url 'delete_box' order.id box.id %}">DELETE BOX</a></td>
           </tr>
         {% endfor %}
       </tbody>
@@ -60,6 +65,10 @@
 
  const selectEl = document.getElementById('id_box');
   M.FormSelect.init(selectEl);
+
+   const selectEl2 = document.getElementById('id_item_ordered');
+  M.FormSelect.init(selectEl2);
+
 </script>
 
 

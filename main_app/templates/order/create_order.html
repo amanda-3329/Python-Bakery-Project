@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Add New Order</h1>
+<h1>Create Your Order</h1>
+<h4>Enter Customer Information Below</h4>
 
 <form action="{% url 'create_order' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button class="btn" type="submit">Add Order</button>
-</form>
+    <button class="btn grey" type="submit">Proceed to next page</button>
+
+  </form>
 
 {% endblock %}

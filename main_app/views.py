@@ -32,7 +32,7 @@ def detail(request, order_id):
     
 
     return render(request, 'order/order_detail.html', context)
-# CREATE ORDER-----------------------
+# CREATE ORDER is CUSTOMER INFO PAGE:  -----------------------
 def create_order(request):
     form = OrderForm()
     context = { 'form': form }
@@ -76,3 +76,11 @@ def box(request, order_id):
         new_box_size.order_id = order_id
         new_box_size.save()
         return redirect('detail', order_id)
+
+#Delete Box:
+def delete_box(request, order_id, box_id):
+    order = Order.objects.get(id=order_id)
+    found_box = Box.objects.get(id=box_id)
+    order.box_set.remove(found_box)
+
+    return redirect('detail', order_id = order_id)

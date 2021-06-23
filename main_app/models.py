@@ -10,21 +10,31 @@ BOX =(
     ('12', '12-pack')
 )
 
+ORDER=(
+    ('Blu', 'Blueberry Muffin'),
+    ('Ban', 'Banana Nut Muffin'),
+    ('Cra', 'Cranberry Orange Muffin')
+)
+
 # # Create your models here.
 class Order(models.Model):
-    order_date = models.DateField('Date Needed')
-    item_ordered = models.CharField(
-        ('Item Ordered'),
-        max_length=100
-    )
-    box_size = models.CharField(max_length=100)
+    # order_date = models.DateField('Date Needed')
+    # item_ordered = models.CharField(
+    #     ('Choose Your Muffin!'),
+    #     max_length=3,
+    #     choices=ORDER,
+    #     default=ORDER[0][0]
+
+    #     )
+    # )
+    # box_size = models.CharField(max_length=100)
     customer_name = models.CharField(max_length=100)
     customer_email = models.CharField(max_length=100)
     customer_phone = models.CharField(max_length=100)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f'{self.order_date} | {self.item_ordered}'
+    # def __str__(self):
+    #     return f'{self.customer_name()}'
 
 class Box(models.Model):
     date = models.DateField('Date Needed By')
@@ -34,8 +44,14 @@ class Box(models.Model):
         choices=BOX,
         default=BOX[0][0]
     )
+    item_ordered = models.CharField(
+        ('Choose Your Muffin!'),
+        max_length=3,
+        choices=ORDER,
+        default=ORDER[0][0]
+
+        )
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return f'{self.get_box_display()} on {self.date}'
-# dont' forget to register in admin.py, then go to views.py to add this to the front-end
+        return f'{self.get_box_display()}|{self.get_item_ordered_display}'

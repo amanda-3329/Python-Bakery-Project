@@ -17,6 +17,7 @@
           <a href="{% url 'create_order' %}">Create Order</a>
             <a href="{% url 'delete_order' order.id %}">Delete</a>
             <a href="{% url 'update_order' order.id %}">Update</a>
+            
             </div>
       </div>
     </div>
@@ -37,6 +38,7 @@
         <tr><th>Date</th>
         <th>Box Size</th>
         <th>Type of Muffin</th>
+        <th>Order Number</th>
         </tr>
       </thead>
       <tbody>
@@ -44,7 +46,8 @@
           <tr>
             <td>{{box.date}}</td>            
             <td>{{box.get_box_display}}</td>
-            <td>{{box.get_item_ordered_display}}</td>
+            <td>{{box.get_item_ordered_display}}
+            <td>{{order.id}}</td>
             {% comment %} DELETE TASTING {% endcomment %}
             <td><a class="btn purple" href="{% url 'delete_box' order.id box.id %}">DELETE BOX</a></td>
           </tr>
@@ -53,6 +56,17 @@
     </table>
   </div>
 </div>
+
+{% comment %} Order Tracker Card {% endcomment %}
+  <div class="col s6">  
+  <form action=""method="post">
+        {% csrf_token %}
+        {{ order_tracker.as_p }}
+        <input type="submit" class="btn grey" value="Submit Order Status"> 
+      </form>
+
+
+
 
 <script>
   const dateEl = document.getElementById('id_date');
@@ -66,8 +80,14 @@
  const selectEl = document.getElementById('id_box');
   M.FormSelect.init(selectEl);
 
-   const selectEl2 = document.getElementById('id_item_ordered');
+  const selectEl2 = document.getElementById('id_item_ordered');
   M.FormSelect.init(selectEl2);
+
+  const selectEl3 = document.getElementById('id_status');
+  M.FormSelect.init(selectEl3);
+
+  {% comment %} const selectEl4 = document.getElementById('id_order';
+  M.FormSelect.init(selectEl4); {% endcomment %}
 
 </script>
 

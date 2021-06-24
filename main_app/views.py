@@ -1,7 +1,10 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Order, Box
-from .forms import OrderForm, BoxForm
+from .forms import OrderForm, BoxForm, OrderTrackerForm
+
+
 
 def home(request):
     return render(request, 'home.html')
@@ -21,11 +24,13 @@ def order(request):
 def detail(request, order_id):
     found_order = Order.objects.get(id=order_id)
     print(found_order)
-
+# THIS MAKES THE FORM SHOW UP :
     box_form = BoxForm()
+    order_tracker = OrderTrackerForm()
     context = { 
         'order': found_order,
-        'box_form': box_form
+        'box_form': box_form,
+        'order_tracker': order_tracker
     
      }
 
@@ -48,7 +53,7 @@ def create_order(request):
 
 # Delete Order-------------
 def delete_order(request, order_id):
-    order =Order.objects.get(id=order_id)
+    order = Order.objects.get(id=order_id)
     order.delete()
     return redirect('order')
 
@@ -84,3 +89,14 @@ def delete_box(request, order_id, box_id):
     order.box_set.remove(found_box)
 
     return redirect('detail', order_id = order_id)
+
+
+    
+# Order Tracker Form------
+def order_tracker(request, order_id):
+    form = OrderTrackerForm(request.POST)
+    if form.is_valid():
+        new_tracking = form.save(commit=False)
+        new_tracking.order_id = order_id
+        new_tracking.save()
+        return redirect('detail', order_id)

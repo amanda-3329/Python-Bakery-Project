@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+import random
 
 
 # TUPLE of tuples:
@@ -16,18 +17,17 @@ ORDER=(
     ('Cra', 'Cranberry Orange Muffin')
 )
 
+STATUS=(
+    ('pu', 'picked up'),
+    ('re', 'ready for pickup'),
+    ('sc', 'scheduled'),
+    ('ip', 'in progress')
+
+)
+
 # # Create your models here.
 class Order(models.Model):
-    # order_date = models.DateField('Date Needed')
-    # item_ordered = models.CharField(
-    #     ('Choose Your Muffin!'),
-    #     max_length=3,
-    #     choices=ORDER,
-    #     default=ORDER[0][0]
-
-    #     )
-    # )
-    # box_size = models.CharField(max_length=100)
+    
     customer_name = models.CharField(max_length=100)
     customer_email = models.CharField(max_length=100)
     customer_phone = models.CharField(max_length=100)
@@ -35,6 +35,21 @@ class Order(models.Model):
 
     # def __str__(self):
     #     return f'{self.customer_name()}'
+
+
+#Order Tracker Model:------------
+class OrderTracker(models.Model):
+    status = models.CharField(
+        ('status'),
+        max_length=2, 
+        choices = STATUS, 
+        default=STATUS[0][0])
+    order_number = models.CharField(
+        ('order number'),
+        max_length=100),
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
+    def __str__(self):
+        return f'{self.status}'
 
 class Box(models.Model):
     date = models.DateField('Date Needed By')
@@ -51,6 +66,7 @@ class Box(models.Model):
         default=ORDER[0][0]
 
         )
+    order_tracker = models.ManyToManyField
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
 
     def __str__(self):

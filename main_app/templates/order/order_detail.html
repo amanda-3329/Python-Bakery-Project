@@ -55,15 +55,15 @@
       </tbody>
     </table>
   </div>
-</div>
-
-{% comment %} Order Tracker Card {% endcomment %}
   <div class="col s6">  
   <form action=""method="post">
         {% csrf_token %}
         {{ order_tracker.as_p }}
         <input type="submit" class="btn grey" value="Submit Order Status"> 
       </form>
+</div>
+
+{% comment %} Order Tracker Card {% endcomment %}
 
 
 

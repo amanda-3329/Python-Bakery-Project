@@ -23,4 +23,4 @@ class BoxForm(forms.ModelForm):
 class OrderTrackerForm(forms.ModelForm):
     class Meta:
         model = OrderTracker
-        fields = ('status', 'order')
+        fields = ('status',)

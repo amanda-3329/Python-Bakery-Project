@@ -40,7 +40,7 @@ class Order(models.Model):
 #Order Tracker Model:------------
 class OrderTracker(models.Model):
     status = models.CharField(
-        ('status'),
+        ('Order Status'),
         max_length=2, 
         choices = STATUS, 
         default=STATUS[0][0])

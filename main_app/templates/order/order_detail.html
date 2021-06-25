@@ -14,7 +14,7 @@
           </div>
   {% comment %} Delete/Update Buttons {% endcomment %}
         <div class="card-action">
-          <a href="{% url 'create_order' %}">Create Order</a>
+          <a href="{% url 'create_order' %}"><span class="blue-text text-darken-2">Create Order</span></a>
             <a href="{% url 'delete_order' order.id %}">Delete</a>
             <a href="{% url 'update_order' order.id %}">Update</a>
             

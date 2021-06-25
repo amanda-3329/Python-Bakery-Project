@@ -19,10 +19,10 @@ ORDER=(
 )
 
 STATUS=(
-    ('pu', 'picked up'),
-    ('re', 'ready for pickup'),
-    ('sc', 'scheduled'),
-    ('ip', 'in progress')
+    ('sc', 'Scheduled'),
+    ('ip', 'In Progress'),
+    ('re', 'Ready For Pickup'),
+    ('pu', 'Picked up')
 
 )
 

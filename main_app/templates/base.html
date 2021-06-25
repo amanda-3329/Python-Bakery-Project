@@ -20,10 +20,10 @@
 <body>
   <header class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <ul>
-          <li><a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Honeybee Bakery</a></li>
-        </ul>
+      {% comment %} <div class="nav-wrapper"> {% endcomment %}
+       
+          <a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Honeybee Bakery</a>
+        
         <ul class="right">
           <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="/about">About</a></li>
@@ -41,7 +41,7 @@
           
           
         </ul>
-      </div>
+      {% comment %} </div> {% endcomment %}
     </nav>
   </header>
   <main class="container">

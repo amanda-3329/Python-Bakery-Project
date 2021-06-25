@@ -8,15 +8,15 @@
     <div class="card">
       <div class="card-content">
         <span class="card-title">{{ order.item_ordered }}</span>
-         <p>Customer Name:{{ order.customer_name }}</p>
+         <p>Customer Name: {{ order.customer_name }}</p>
         <p>Customer Email Address: {{ order.customer_email }}</p>     
         <p>Customer Phone Number: {{ order.customer_phone }}</p>  
           </div>
   {% comment %} Delete/Update Buttons {% endcomment %}
         <div class="card-action">
-          <a href="{% url 'create_order' %}"><span class="blue-text text-darken-2">Create Order</span></a>
-            <a href="{% url 'delete_order' order.id %}">Delete</a>
-            <a href="{% url 'update_order' order.id %}">Update</a>
+          <a href="{% url 'create_order' %}"><span class="yellow-text text-darken-4">Create Order</span></a>
+            <a href="{% url 'delete_order' order.id %}"><span class="yellow-text text-darken-4">Delete</a>
+            <a href="{% url 'update_order' order.id %}"><span class="yellow-text text-darken-4">Update</a>
             
             </div>
       </div>
@@ -28,7 +28,7 @@
   <form action="{% url 'box' order.id %}"method="post">
         {% csrf_token %}
         {{ box_form.as_p }}
-        <input type="submit" class="btn grey" value="submit">
+        <input type="submit" class="btn light-green darken-4" value="submit">
       </form>
 
       
@@ -51,7 +51,7 @@
             <td>{{order.id}}</td>
             <td>{{order.get_status_display}}</td>
             {% comment %} DELETE TASTING {% endcomment %}
-            <td><a class="btn purple" href="{% url 'delete_box' order.id box.id %}">DELETE BOX</a></td>
+            <td><a class="btn  deep-orange accent-4" href="{% url 'delete_box' order.id box.id %}">DELETE BOX</a></td>
           </tr>
         {% endfor %}
       </tbody>
@@ -85,7 +85,8 @@
     format: 'yyyy-mm-dd',
     defaultDate: new Date(),
     setDefaultDate: true,
-    autoClose: true
+    autoClose: true,
+    minDate: new Date()
   });
 
  const selectEl = document.getElementById('id_box');

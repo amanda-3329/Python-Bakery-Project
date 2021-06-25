@@ -75,13 +75,27 @@ body {
 .shop-h1{
   font-family: 'Sacramento';
 }
-.nav-wrapper{
+/* .nav-wrapper{
+  background-color:black;
+} */
+nav{
+  height: auto;
   background-color:black;
 }
+
 
 nav .brand-logo{
   font-family: 'Sacramento';
 }
 .page-footer{
   background-color: grey;
+}
+
+@media (max-width: 550px) {
+  
+  ul{
+    
+    padding-top: 50px;
+    
+  }
 }

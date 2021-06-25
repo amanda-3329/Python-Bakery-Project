@@ -35,6 +35,9 @@
           <li><a href="{% url 'login' %}">Log In</a></li>
           <li><a href="{%url 'signup' %}">Sign Up</a></li>
           {% endif %}
+           {% if 'auth.view_group' in perms %}
+        <li><a href="{% url 'admin_order' %}" class="left">View All Orders</a></li>
+            {% endif %}
           
           
         </ul>

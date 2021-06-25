@@ -15,6 +15,7 @@ urlpatterns = [
     path('order/<int:order_id>/status/', views.status, name='status'),
     path('order/<int:order_id>/delete_box/<int:box_id>/', views.delete_box, name='delete_box'),
     path('accounts/signup', views.signup, name='signup'),
+
     # Below path takes us to the details of an order:
     path('order/<int:order_id>/', views.detail, name='detail')
     

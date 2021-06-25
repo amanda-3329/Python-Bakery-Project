@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
 from django.contrib.auth.models import User
-import random
+
 
 
 # TUPLE of tuples:
@@ -31,25 +32,29 @@ class Order(models.Model):
     customer_name = models.CharField(max_length=100)
     customer_email = models.CharField(max_length=100)
     customer_phone = models.CharField(max_length=100)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(
+        ('Order Status'),
+        max_length=2, 
+        choices = STATUS, 
+        default=STATUS[0][0])
 
     # def __str__(self):
     #     return f'{self.customer_name()}'
 
 
 #Order Tracker Model:------------
-class OrderTracker(models.Model):
-    status = models.CharField(
-        ('Order Status'),
-        max_length=2, 
-        choices = STATUS, 
-        default=STATUS[0][0])
-    order_number = models.CharField(
-        ('order number'),
-        max_length=100),
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
-    def __str__(self):
-        return f'{self.status}'
+# class OrderTracker(models.Model):
+#     status = models.CharField(
+#         ('Order Status'),
+#         max_length=2, 
+#         choices = STATUS, 
+#         default=STATUS[0][0])
+
+#     box = models.ManyToManyField
+#     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
+#     def __str__(self):
+#         return f'{self.status}'
 
 class Box(models.Model):
     date = models.DateField('Date Needed By')

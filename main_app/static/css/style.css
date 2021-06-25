@@ -4,25 +4,50 @@ body {
     flex-direction: column;
     background-color:white; 
   }
+  .home-background{
+    z-index: -1;
+    max-width: 100%;
+    height: auto;
+    opacity: 0.5
+  }
+
+
+  .bee-img{
+    max-width: 10%;
+    margin-top: 10px; 
+  }
 
   main {
     flex: 1 0 auto;
   }
 
-  
+  /* header{
+    font-family: 'Sacramento';
+  } */
   
   footer {
     padding-top: 0;
     text-align: right;
     
   }
+.home-h1{ 
+  font-family: 'Sacramento';
+  /* border: 1px solid red; */
+  width: 50%;
+  float: left;
+  clear: both;
+  margin: 0;
+}
 
+.shop-h1{
+  font-family: 'Sacramento';
+}
 .nav-wrapper{
   background-color:black;
 }
 
 nav .brand-logo{
-  font-family: cursive;
+  font-family: 'Sacramento';
 }
 .page-footer{
   background-color: grey;

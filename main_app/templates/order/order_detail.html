@@ -39,6 +39,7 @@
         <th>Box Size</th>
         <th>Type of Muffin</th>
         <th>Order Number</th>
+        <th>Order Status</th>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +49,7 @@
             <td>{{box.get_box_display}}</td>
             <td>{{box.get_item_ordered_display}}
             <td>{{order.id}}</td>
+            <td>{{order.get_status_display}}</td>
             {% comment %} DELETE TASTING {% endcomment %}
             <td><a class="btn purple" href="{% url 'delete_box' order.id box.id %}">DELETE BOX</a></td>
           </tr>
@@ -55,15 +57,24 @@
       </tbody>
     </table>
   </div>
+{% comment %} Order Tracker Card {% endcomment %}
+{% comment %} CONDITIONAL VIEW OF THIS FORM: {% endcomment %}
+{% if 'auth.view_group' in perms %}
+
+<div class="row">
   <div class="col s6">  
-  <form action=""method="post">
+  <h4>Order Status</h4>
+
+ 
+    <form action="{% url 'status' order.id %}"method="post">
         {% csrf_token %}
         {{ order_tracker.as_p }}
         <input type="submit" class="btn grey" value="Submit Order Status"> 
       </form>
+  </div>
+{% endif %}
 </div>
 
-{% comment %} Order Tracker Card {% endcomment %}
 
 
 

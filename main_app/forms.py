@@ -1,6 +1,6 @@
 from django import forms
 from django.db.models.fields import DateField
-from .models import Order, Box, OrderTracker
+from .models import Order, Box
 
 # class DateInput(forms.DateInput):
 #     input_type = 'date'
@@ -22,5 +22,5 @@ class BoxForm(forms.ModelForm):
 
 class OrderTrackerForm(forms.ModelForm):
     class Meta:
-        model = OrderTracker
-        fields = ('status',)
+        model = Order
+        fields = ('status', ) 

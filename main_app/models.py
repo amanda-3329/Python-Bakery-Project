@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models 
+from phone_field import PhoneField
 from django.urls import reverse
 from datetime import date
 from django.contrib.auth.models import User
@@ -32,12 +33,12 @@ class Order(models.Model):
     customer_name = models.CharField(
         ('Name'),
         max_length=100)
-    customer_email = models.CharField(
+    customer_email = models.EmailField(
         ('Email'),
         max_length=100)
-    customer_phone = models.CharField(
-        ('Phone'),
-        max_length=100)
+    customer_phone = PhoneField(
+        blank=True
+        )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.CharField(
         ('Order Status'),

@@ -7,8 +7,9 @@
 <form action="{% url 'create_order' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
+    
 
-    <button class="btn grey" type="submit">Proceed to next page</button>
+    <button class="btn light-green darken-4" type="submit">Proceed to next page</button>
 
   </form>
 

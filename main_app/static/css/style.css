@@ -154,6 +154,14 @@ a{
 a:hover{
   color: grey;
 }
+
+.contact-info{
+  font-family: Avenir;
+}
+
+.hours{
+  font-family: Avenir;
+}
 @media (max-width: 550px) {
   
   ul{

@@ -151,11 +151,28 @@ a:hover{
 .hours{
   font-family: Avenir;
 }
-@media (max-width: 550px) {
+@media only screen and (max-width: 550px) {
   
   ul{
     
     padding-top: 50px;
     
   }
+
+  .page-footer{
+    margin-left: 0px;
+
+  }
+
+  .col.sqs-col-4.span-4 {
+    justify-content: left;
+    align-items: center;
+    float: left;
+    word-spacing: 10px;
+    padding: 10px; 
+    border: 1px solid red;
+  }
+
+
+
 }

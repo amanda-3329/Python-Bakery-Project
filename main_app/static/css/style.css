@@ -12,6 +12,13 @@ body {
   }
 .right{
   font-family: Avenir;
+  margin-left: 10px ;   
+}
+.left{
+  float: left;
+  clear: both;
+  margin-left: 25px;
+  font-family: Avenir;
 }
   .img-home2 {
     float: right;
@@ -105,10 +112,48 @@ nav .brand-logo{
 .col{
   font-family: Avenir;
 }
-.page-footer{
-  background-color: grey;
+.sqs-col-4{
+  width: 33.33%;
+ 
 }
 
+[class*=sqs-col] {
+  float: left;
+  justify-content: center;
+  max-width: 10%;
+  display: flex;
+
+   
+}
+.page-footer{
+  background-color:#343638;
+  
+}
+.card-order{
+  color: black;
+}
+
+/* .card-order:hover{
+  color: white;
+  background-color: black;
+} */
+.card-content:hover{
+  background-color: black;
+  color: white;
+}
+.card-action:hover{
+  background-color: black;
+  color: white;
+}
+.yellow-text.text-darken-4:hover{
+  color: white !important;
+}
+a{
+  color:white;
+ }
+a:hover{
+  color: grey;
+}
 @media (max-width: 550px) {
   
   ul{

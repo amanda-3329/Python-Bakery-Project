@@ -5,7 +5,7 @@
 </div>
 {% comment %} for loop means for each order, generate this card {% endcomment %}
 {%for order in orders %}
-<a href="{% url 'detail' order.id %}">
+<a href="{% url 'detail' order.id %}" class="card-order">
 <div class="card">
     <div class="card-content">
       <span class="card-title">{{ order.item_ordered }}</span>

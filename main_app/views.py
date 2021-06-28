@@ -1,7 +1,7 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Order, Box
+from .models import Order, Box, Map
 from .forms import OrderForm, BoxForm, OrderTrackerForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -102,6 +102,11 @@ def delete_order(request, order_id):
     order = Order.objects.get(id=order_id)
     order.delete()
     return redirect('order')
+
+def map_display(request):
+    map = Map.objects.get()
+    return render(request, 'about')
+
 
 # Update Order-------
 @login_required

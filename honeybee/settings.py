@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'phone_field',
+    'django_google_maps'
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/order/order'
 LOGOUT_REDIRECT_URL = '/'
 
+GOOGLE_MAPS_API_KEY='AIzaSyCgs1hVUNcVzjhRtSA8XJSVBnQcm_yIzqo'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 

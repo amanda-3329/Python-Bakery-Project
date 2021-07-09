@@ -56,6 +56,7 @@ The admin has the ability to update the order status from the default "Scheduled
 ![Order_Status](https://user-images.githubusercontent.com/85468988/125088633-79470580-e082-11eb-8ddc-1f98bdc11919.png)
 
 It will then reflect on the user's side with that new status:
+
 ![customer_order_status](https://user-images.githubusercontent.com/85468988/125089157-fb372e80-e082-11eb-97a1-65c1d9ed3275.png)
 
 

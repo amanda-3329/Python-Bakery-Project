@@ -51,7 +51,7 @@
             <td>{{box.get_item_ordered_display}}
             <td>{{order.id}}</td>
             <td>{{order.get_status_display}}</td>
-            {% comment %} DELETE TASTING {% endcomment %}
+            {% comment %} DELETE  {% endcomment %}
             <td><a onclick="return confirm('Are you sure you want to delete this?')" class="btn  deep-orange accent-4" href="{% url 'delete_box' order.id box.id %}" >DELETE</a></td>
           </tr>
         {% endfor %}

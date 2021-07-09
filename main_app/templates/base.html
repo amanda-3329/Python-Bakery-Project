@@ -20,9 +20,7 @@
 <body>
   <header class="navbar-fixed">
     <nav>
-      {% comment %} <div class="nav-wrapper"> {% endcomment %}
-       
-          <a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Honeybee Bakery</a>
+        <a href="{% url 'home' %}" class="left brand-logo">&nbsp;&nbsp;Honeybee Bakery</a>
         
         <ul class="right">
           <li><a href="{% url 'home' %}">Home</a></li>
@@ -36,14 +34,13 @@
           <li><a href="{%url 'signup' %}">Sign Up</a></li>
           {% endif %}
            {% if 'auth.view_group' in perms %}
-        <li><a href="{% url 'admin_order' %}" class="left">View Bakery Orders</a></li>
-            {% endif %}
-          
-          
+          <li><a href="{% url 'admin_order' %}" class="left">View Bakery Orders</a></li>
+            {% endif %}  
         </ul>
-      {% comment %} </div> {% endcomment %}
     </nav>
   </header>
+
+
   <main class="container">
     {% block content %}
     {% endblock %}
@@ -53,14 +50,14 @@
     <a href="https://www.facebook.com/" target="_blank">Facebook </a>&nbsp; | &nbsp;
     <a href="https://www.instagram.com/" target="_blank"> Instagram </a>
     &nbsp;
-
     </div>
+
     <div class="right">All Rights Reserved, &copy; 2021 Honeybee Bakery &nbsp;</div>
-    <ul>
+      <ul>
         {% if 'auth.view_group' in perms %}
         <li><a href="{% url 'admin_order' %}" class="left">Admin View</a></li>
         {% endif %}
       </ul>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
